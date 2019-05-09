@@ -18,6 +18,7 @@ label{
 .date{
     color: #ffffff;
     font-size: 14px;
+    float: right;
 }
 .username{
     color: #ffffff;
@@ -27,6 +28,18 @@ label{
     color: #ffffff;
     margin-left: 10px;
 }
+
+input[type=checkbox]{
+    /*width: 80%;*/
+    padding-right: 50%;
+    padding-left: 50%;
+    /*float: right;*/
+}
+
+input[type=checkbox]:checked + label.strikethrough{
+    text-decoration: line-through;
+}
+
 .empty{
     color: #ffffff;
     padding-left: 40%;
@@ -40,26 +53,39 @@ label{
     overflow : scroll;
     overflow-x: hidden;
     width:750px;
-    margin-right: auto;
-    margin-left: auto;
-}
-.copyrightFooter{
-    color: #ffffff;
+    padding-top: 15px;
 }
 
 .blockItem ul{
-    width: 80%;
+    width: 90%;
     border-radius: 5px;
     border: 1px solid #000000;
-    /*margin-bottom: 5px;*/
+    /*padding-bottom: 5px;*/
     background-color: #444444;
 }
 
 ul.hr {
-    margin-left: 30%;
-    margin: 5px;
+    /*width: 80%;*/
+    margin-left: auto;
+    margin-right: auto;
+    /*margin: 5px;*/
     padding: 4px;
+    /*padding-bottom: -5px;*/
+    cursor: pointer;
+    display: flex;
 }
+ul.hr:hover{
+  background-color: #333;
+}
+/*input[type="checkbox"]:checked{*/
+/*    visibility:hidden;*/
+/*    text-decoration: line-through;*/
+/*}*/
+/*input[type="checkbox"][value="text"]:checked{*/
+/*    visibility:hidden;*/
+/*}*/
+
+/*---------------------*/
 ul.hr li {
     display: inline;
     margin-right: 5px;
@@ -81,18 +107,8 @@ ul.hr li {
         color: #ffffff;
         font-size: 39px;
     }
-    .username{
-        color: #ffffff;
-        font-size: 13px;
-    }
-    .comment{
-        color: #ffffff;
-        margin-left: 10px;
-    }
 
-    form button{
-        width: 100%;
-    }
+
 }
 @media screen and (max-width: 900px) {
     .blockItem {
