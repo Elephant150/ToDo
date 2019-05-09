@@ -7,7 +7,6 @@ body{
 }
 .form{
     padding-top: 70px;
-    display: inline;
 }
 u{
     color: #ffffff;
@@ -29,11 +28,15 @@ label{
     margin-left: 10px;
 }
 
+.text:hover{
+    color: #888;
+}
+input[type=checkbox]:checked + label.strikethrough .text{
+    color: #666666;
+}
+
 input[type=checkbox]{
-    /*width: 80%;*/
-    padding-right: 50%;
-    padding-left: 50%;
-    /*float: right;*/
+    left: 30px;
 }
 
 input[type=checkbox]:checked + label.strikethrough{
@@ -49,7 +52,7 @@ input[type=checkbox]:checked + label.strikethrough{
     background-color: rgba(0, 0, 0, 0.6);
     border: 1px solid #111111;
     border-radius: 5px;
-    height:300px;
+    height:450px;
     overflow : scroll;
     overflow-x: hidden;
     width:750px;
@@ -75,7 +78,7 @@ ul.hr {
     display: flex;
 }
 ul.hr:hover{
-  background-color: #333;
+  background-color: #333333;
 }
 /*input[type="checkbox"]:checked{*/
 /*    visibility:hidden;*/

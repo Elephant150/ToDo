@@ -9,8 +9,7 @@ include 'config.php';?>
                 <div class="form-group">
                     <label for="exampleFormControlInput1">Add your item 🙃</label>
                     <input type="text" name="text" class="form-control" id="exampleFormControlInput1" placeholder="Add your item" required>
-                </div>
-                <button type="submit" class="btn btn-primary mb-2">Add</button>
+                </div><button type="submit" class="btn btn-primary mb-2">Add</button>
             </form>
             <div class="blockItem">
                 <?php include 'todo.php';?>
