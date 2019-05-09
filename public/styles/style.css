@@ -1,0 +1,145 @@
+body{
+    background-color: #444444;
+    background-image: url('/public/images/background.png');
+    /*background-repeat: no-repeat repeat;*/
+    /*background-size: cover;*/
+    font-family: Cantarell;
+}
+.form{
+    padding-top: 70px;
+    display: inline;
+}
+u{
+    color: #ffffff;
+}
+label{
+    color: #ffffff;
+}
+.date{
+    color: #ffffff;
+    font-size: 14px;
+}
+.username{
+    color: #ffffff;
+    font-size: 18px;
+}
+.text{
+    color: #ffffff;
+    margin-left: 10px;
+}
+.empty{
+    color: #ffffff;
+    padding-left: 40%;
+    padding-top: 16%;
+}
+.blockItem{
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid #111111;
+    border-radius: 5px;
+    height:300px;
+    overflow : scroll;
+    overflow-x: hidden;
+    width:750px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.copyrightFooter{
+    color: #ffffff;
+}
+
+.blockItem ul{
+    width: 80%;
+    border-radius: 5px;
+    border: 1px solid #000000;
+    /*margin-bottom: 5px;*/
+    background-color: #444444;
+}
+
+ul.hr {
+    margin-left: 30%;
+    margin: 5px;
+    padding: 4px;
+}
+ul.hr li {
+    display: inline;
+    margin-right: 5px;
+    padding: 3px;
+}
+@media screen and (max-width: 600px) {
+    .blockItem {
+        height: 200px;
+        width: 100%;
+    }
+
+    .empty {
+        padding-left: 35%;
+        padding-top: 20%;
+        color: #ffffff;
+    }
+
+    .date{
+        color: #ffffff;
+        font-size: 39px;
+    }
+    .username{
+        color: #ffffff;
+        font-size: 13px;
+    }
+    .comment{
+        color: #ffffff;
+        margin-left: 10px;
+    }
+
+    form button{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 900px) {
+    .blockItem {
+        height: 200px;
+        width: 100%;
+    }
+
+    .empty {
+        padding-left: 35%;
+        padding-top: 20%;
+        color: #ffffff;
+    }
+
+    .date{
+        color: #ffffff;
+        font-size: 14px;
+    }
+    .username{
+        color: #ffffff;
+        font-size: 18px;
+    }
+    .comment{
+        color: #ffffff;
+        margin-left: 10px;
+    }
+
+    form button{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .blockItem {
+        height: 200px;
+        width: 100%;
+    }
+
+    .empty {
+        padding-left: 35%;
+        padding-top: 20%;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .empty {
+        padding-left: 23%;
+        padding-top: 30%;
+    }
+
+}
