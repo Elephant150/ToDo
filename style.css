@@ -1,6 +1,6 @@
 body{
     background-color: #444444;
-    background-image: url('/public/images/background.png');
+    /*background-image: url('/public/images/background.png');*/
     /*background-repeat: no-repeat repeat;*/
     /*background-size: cover;*/
     font-family: Cantarell;
@@ -78,7 +78,7 @@ ul.hr {
     display: flex;
 }
 ul.hr:hover{
-  background-color: #333333;
+    background-color: #333333;
 }
 /*input[type="checkbox"]:checked{*/
 /*    visibility:hidden;*/
