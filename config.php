@@ -6,13 +6,13 @@ $edit_task = false;
 
 $errors = "";
 
-$db = mysqli_connect('mysql.zzz.com.ua', 'psaradise', 'Psaradise1', 'psaradise');
+$db = mysqli_connect('', '', '', '');
 //server
 if (isset($_POST['submit'])) {
     $task = $_POST['task'];
 
     if (empty($task)) {
-        echo 'Error!!! Empty task';
+        echo '<script>alert("Error!!! Empty task")</script>';
     } else {
         mysqli_query($db, "INSERT INTO todo (task) VALUES ('$task')");
         header('location: index.php');
@@ -48,4 +48,11 @@ if (isset($_GET['edit_task'])) {
     $id = $record['id'];
 }
 //-------------------*************************
-$todo = mysqli_query($db, "SELECT * FROM todo");
+
+echo $_GET['cb'];
+
+$cb = (!empty($_GET['cb'])) ? (int) $_GET['cb'] : 0;
+
+mysqli_query("UPDATE `todo` SET `value` = $cb WHERE `option` = 'cb' ");
+
+$todo = mysqli_query($db, "SELECT * FROM todo ORDER BY id DESC ");
