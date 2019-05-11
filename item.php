@@ -17,21 +17,21 @@ include 'config.php';
 </head>
 <body>
 <div class="container">
-    <h1>To-Do List</h1>
-    <form action="index.php" method="post">
-        <input type="hidden" name="list_id" value="<?= $list_id; ?>">
+    <h1><a href="index.php"><</a>To-Do Item</h1>
+    <form action="item.php" method="post">
+        <input type="hidden" name="id" value="<?= $id; ?>">
 
 <!--        --><?php //if (isset($errors)) { ?>
 <!--            <p>--><?//= $errors; ?><!--</p>-->
 <!--        --><?php //} ?>
 
-        <input type="text" name="list" class="input form-control" value="<?= $list; ?>" required>
+        <input type="text" name="task" class="input form-control" value="<?= $task; ?>" required>
 
-        <?php if ($edit_list == false): ?>
+        <?php if ($edit_task == false): ?>
             <button type="submit" class="button btn btn-dark" name="submit">Add</button>
 
         <?php else: ?>
-            <button type="submit" class="button btn btn-dark" name="edit_btn_list">Edit</button>
+            <button type="submit" class="button btn btn-dark" name="edit">Edit</button>
 
         <?php endif ?>
     </form>
@@ -42,21 +42,29 @@ include 'config.php';
         <tr class="head">
             <th scope="col">№</th>
             <th scope="col">Task</th>
+            <th scope="col">Done</th>
             <th scope="col">Delete</th>
             <th scope="col">Edit</th>
         </tr>
         </thead>
         <tbody>
         <?php $i = 1;
-        while ($row = mysqli_fetch_array($db_list)) { ?>
+        while ($row = mysqli_fetch_array($todo)) { ?>
             <tr>
                 <th scope="row"><?= $i ?></th>
-                <td class="task"><a href="item.php"><?= $row['list']; ?></a></td>
+                <!--                <td>--><? //= $i ?><!--</td>-->
+                <td class="task"><?= $row['task']; ?></td>
+                <td class="checkbox">
+                    <label class="checkContainer">
+                        <input type="checkbox" name="cb" value="1">
+                        <span class="checkmark"></span>
+                    </label>
+                </td>
                 <td class="delete">
-                    <a href="index.php?del_list=<?= $row['list_id']; ?>"><i class="fas fa-trash"></i></a>
+                    <a href="item.php?del_task=<?= $row['id']; ?>"><i class="fas fa-trash"></i></a>
                 </td>
                 <td class="edit">
-                    <a href="index.php?edit_list=<?= $row['list_id']; ?>"><i class="fas fa-pen-alt"></i></a>
+                    <a href="item.php?edit_task=<?= $row['id']; ?>"><i class="fas fa-pen-alt"></i></a>
                 </td>
             </tr>
             <?php $i++;
