@@ -17,52 +17,7 @@ include 'config.php';
 </head>
 <body>
 <div class="container">
-    <h1>To-Do List</h1>
-    <form action="index.php" method="post">
-        <input type="hidden" name="list_id" value="<?= $list_id; ?>">
 
-<!--        --><?php //if (isset($errors)) { ?>
-<!--            <p>--><?//= $errors; ?><!--</p>-->
-<!--        --><?php //} ?>
-
-        <input type="text" name="list" class="input form-control" value="<?= $list; ?>" required>
-
-        <?php if ($edit_list == false): ?>
-            <button type="submit" class="button btn btn-dark" name="submit">Add</button>
-
-        <?php else: ?>
-            <button type="submit" class="button btn btn-dark" name="edit_btn_list">Edit</button>
-
-        <?php endif ?>
-    </form>
-
-
-    <table class="table">
-        <thead>
-        <tr class="head">
-            <th scope="col">№</th>
-            <th scope="col">Task</th>
-            <th scope="col">Delete</th>
-            <th scope="col">Edit</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php $i = 1;
-        while ($row = mysqli_fetch_array($db_list)) { ?>
-            <tr>
-                <th scope="row"><?= $i ?></th>
-                <td class="task"><a href="item.php"><?= $row['list']; ?></a></td>
-                <td class="delete">
-                    <a href="index.php?del_list=<?= $row['list_id']; ?>"><i class="fas fa-trash"></i></a>
-                </td>
-                <td class="edit">
-                    <a href="index.php?edit_list=<?= $row['list_id']; ?>"><i class="fas fa-pen-alt"></i></a>
-                </td>
-            </tr>
-            <?php $i++;
-        } ?>
-        </tbody>
-    </table>
 </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
