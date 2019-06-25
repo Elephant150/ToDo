@@ -19,7 +19,11 @@ if (isset($_GET['del_list'])) {
 }
 //edit list
 
-
+if (isset($_GET['edit_list'])) {
+    $id = $_GET['edit_list'];
+    $edit_list = $db->query("UPDATE FROM lists WHERE id = $id");
+    header("location: index.php");
+}
 
 //if (isset($_GET['edit_list']) && !empty($_GET['edit_list'])){
 //    $id = $_GET['edit_list'];

@@ -1,6 +1,19 @@
 <?php
 include 'view/header.php';
 include 'db.php';
+$idt = $_GET['edit_task'];
+try{
+    $stmt = $db->prepare("select * from tasks where id = $idt");
+    $stmt->execute();
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+        extract($row);
+    }
+}
+
+catch (PDOException $e){
+    print_r("Error - ".$e->getMessage()."<br>");
+    die();
+}
 
 //function getTask($list_id)
 //{
@@ -31,7 +44,7 @@ include 'db.php';
 <div class="container">
 
     <form action="" method="post">
-        <input type="text" name="task" placeholder="Enter your task" class="form-control"><br>
+        <input type="text" name="task" placeholder="Enter your task" value="" class="form-control"><br>
         <input type="submit"  value="submit" class="btn btn-dark">
     </form>
 

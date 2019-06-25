@@ -1,7 +1,7 @@
 <?php
 include 'view/header.php';
 include 'db.php';
-$id = $db->query("select * from tasks ");
+
 function getTask($list_id)
 {
     $sql = "SELECT task FROM tasks WHERE list_id = :list_id ORDER BY id DESC";
@@ -19,12 +19,19 @@ if (isset($_POST['task'])) {
     $insert = $db->exec("insert into tasks(list_id, task) value('$id','$task')");
     header("Location:");
 }
-
+// діч
 if (isset($_GET['del_task'])) {
     $id_task = $_GET['del_task'];
     $delete_task = $db->query("DELETE FROM tasks WHERE id = $id_task");
     header("location:");
 }
+
+if (isset($_GET['del_task'])) {
+    $id = $_GET['del_task'];
+    $del_task = $db->query("DELETE FROM tasks WHERE id = $id");
+    header("location: ");
+}
+$taskId= $_POST['id'];
 
 ?>
 
@@ -36,6 +43,7 @@ if (isset($_GET['del_task'])) {
 </form>
     <br>
 <?php
+print_r($taskId);
 //
 //echo "<pre>";
 //$id = $_GET['id'];
@@ -72,8 +80,8 @@ if (isset($_GET['del_task'])) {
                             ?>
                             </pre>
                         </td>
-                        <td><a href='tasks.php?del_task=<?= intval($delete_task[$i]) ?>'><i class="fas fa-trash"></i></a></td>
-                        <td><a href="edit_task.php?edit_list=<?= intval($id)?>"><i class="fas fa-pen-alt"></i></a></td>
+                        <td><a href='tasks.php?del_task=<?= intval($val['id']) ?>'><i class="fas fa-trash"></i></a></td>
+                        <td><a href="edit_task.php?edit_task=<?= intval($id)?>"><i class="fas fa-pen-alt"></i></a></td>
                     </tr>
                     <?php
                 }
