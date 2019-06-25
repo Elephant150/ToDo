@@ -7,16 +7,8 @@ include 'view/header.php';
 
     <!--form of adding a list-->
     <form action="" method="get">
-        <input type="hidden" name="list_id" value="<?= $list_id; ?>">
-        <input type="text" name="list" class="form-control" value="<?= $i; ?>" required><br>
-        <?php if ($edit_list == false): ?>
-            <button type="submit" class="button btn btn-dark" name="submit">Add</button>
-
-        <?php else: ?>
-            <button type="submit" class="button btn btn-dark" name="edit_btn_list">Edit</button>
-
-        <?php endif ?>
-<!--        <input type="submit" name="submit" value="submit" class="btn btn-dark">-->
+        <input type="text" name="list" class="form-control" value="" required><br>
+        <input type="submit" name="submit" value="submit" class="btn btn-dark">
     </form>
     <br>
 
@@ -39,7 +31,7 @@ include 'view/header.php';
                     <tr>
                         <th scope="row"><?= $i; ?></th>
                         <td>
-                            <a href='view/tasks.php?id="<?= intval($value['id']) ?>"'>
+                            <a href='view/tasks.php?id=<?= intval($value['id']) ?>'>
                                 <?= $value['list_name'] ?>
                             </a>
                         </td>
@@ -54,6 +46,7 @@ include 'view/header.php';
         ?>
         </tbody>
     </table>
+
 </div>
 
 
