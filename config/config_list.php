@@ -1,8 +1,7 @@
 <?php
-include 'db/db.php';
+include 'db.php';
 
-$edit_task = false;
-$edit_list = false;
+
 //output dta
 $query = $db->query("select * from lists order by id desc ")->fetchAll();
 // insert new list

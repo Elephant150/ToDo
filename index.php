@@ -31,7 +31,7 @@ include 'view/header.php';
                     <tr>
                         <th scope="row"><?= $i; ?></th>
                         <td>
-                            <a href='view/tasks.php?id=<?= intval($value['id']) ?>'>
+                            <a href='tasks.php?id=<?= intval($value['id'])?>'>
                                 <?= $value['list_name'] ?>
                             </a>
                         </td>
