@@ -14,6 +14,7 @@ if (isset($_GET['list'])) {
 if (isset($_GET['del_list'])) {
     $id = $_GET['del_list'];
     $del_list = $db->query("DELETE FROM lists WHERE id = $id");
+    $del_list = $db->query("DELETE FROM tasks WHERE list_id = $id");
     header("location: index.php");
 }
 //edit list

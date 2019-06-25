@@ -1,7 +1,7 @@
 <?php
 include 'view/header.php';
 include 'db.php';
-
+$id = $db->query("select * from tasks ");
 function getTask($list_id)
 {
     $sql = "SELECT task FROM tasks WHERE list_id = :list_id ORDER BY id DESC";
@@ -20,7 +20,14 @@ if (isset($_POST['task'])) {
     header("Location:");
 }
 
+if (isset($_GET['del_task'])) {
+    $id_task = $_GET['del_task'];
+    $delete_task = $db->query("DELETE FROM tasks WHERE id = $id_task");
+    header("location:");
+}
+
 ?>
+
 <div class="container">
 
 <form action="" method="post">
@@ -30,10 +37,12 @@ if (isset($_POST['task'])) {
     <br>
 <?php
 //
-echo "<pre>";
-if (!empty(getTask($_GET['id'])))
-    print_r(getTask($_GET['id']));
-echo "</pre>";
+//echo "<pre>";
+//$id = $_GET['id'];
+//if (!empty(getTask($id))) {
+//    print_r(getTask($id));
+//}
+//echo "</pre>";
 ?>
     <table class="table">
         <thead class="thead-dark">
@@ -47,23 +56,24 @@ echo "</pre>";
         <tbody class="table_body">
         <?php include 'config/config_task.php';
         $i = 1;
-        $r = getTask($_GET['id']);
-        if (!empty($r)) {
-            foreach ($r as $value) {
-                if ($value) {
+        $getFunc = getTask($_GET['id']);
+        if (!empty($getFunc)) {
+            foreach ($getFunc as $val) {
+                if ($val) {
 //                    ?>
                     <tr>
                         <th scope="row"><?= $i; ?></th>
                         <td>
                             <pre>
                             <?php
-//                            print_r(getTask($_GET['id']));
-//                            print_r(getTask($_GET['task']));
+//                            print_r(getTask($val['task']));
+                            echo implode('', $val);
+//                            $value;
                             ?>
                             </pre>
                         </td>
-<!--                        <td><a href='tasks.php?del_task=--><?//= intval($value['id']) ?><!--'><i class="fas fa-trash"></i></a></td>-->
-<!--                        <td><a href="tasks.php?edit_list=--><?//= intval(['id']) ?><!--"><i class="fas fa-pen-alt"></i></a></td>-->
+                        <td><a href='tasks.php?del_task=<?= intval($delete_task[$i]) ?>'><i class="fas fa-trash"></i></a></td>
+                        <td><a href="edit_task.php?edit_list=<?= intval($id)?>"><i class="fas fa-pen-alt"></i></a></td>
                     </tr>
                     <?php
                 }
