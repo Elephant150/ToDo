@@ -19,7 +19,6 @@ include 'view/header.php';
             <th scope="col">№</th>
             <th scope="col" class="table_list">List</th>
             <th scope="col">Delete</th>
-            <th scope="col">Edit</th>
         </tr>
         </thead>
         <tbody class="table_body">
@@ -31,16 +30,15 @@ include 'view/header.php';
                     <tr>
                         <th scope="row"><?= $i; ?></th>
                         <td>
-                            <a href='tasks.php?id=<?= intval($value['id'])?>'>
+                            <a href='tasks.php?id=<?= intval($value['id']) ?>'>
                                 <?= $value['list_name'] ?>
                             </a>
                         </td>
-                        <td><a href='index.php?del_list="<?= intval($value['id']) ?>"'><i class="fas fa-trash"></i></a></td>
-                        <td> <a href="index.php?edit_list=<?= intval($value['id']) ?>"><i class="fas fa-pen-alt"></i></a></td>
+                        <td><a href='index.php?del_list="<?= intval($value['id']) ?>"'><i class="fas fa-trash"></i></a>
+                        </td>
                     </tr>
                 <?php }
                 $i++;
-
             }
         }
         ?>
