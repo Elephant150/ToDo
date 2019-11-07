@@ -1,66 +1,58 @@
-<?php
-include 'view/header.php';
-include 'db.php';
-
-function getTask($list_id)
-{
-    $sql = "SELECT task FROM tasks WHERE list_id = :list_id ORDER BY id DESC";
-    $statement = $GLOBALS['db']->prepare($sql);
-    $statement->execute([
-        'list_id' => $list_id
-    ]);
-    $list = $statement->fetchAll(PDO::FETCH_ASSOC);
-    return $list;
-}
-
-if (isset($_POST['task'])) {
-    $task = $_POST['task'];
-    $id = intval($_GET['id']);
-    $insert = $db->exec("insert into tasks(list_id, task) value('$id','$task')");
-    header("Location:");
-}
-?>
-
+<?php include 'view/header.php'; ?>
 <div class="container">
+    <h1><a href="index.php"><i title="Back to the lists?" class="fas fa-arrow-left arrow"></i></a>Tasks</h1>
+    <form method="post">
+        <div class="mb-2">
 
-    <form action="" method="post">
-        <input type="text" name="task" placeholder="Enter your task" class="form-control"><br>
-        <input type="submit" value="submit" class="btn btn-dark">
+            <table class="table table-borderless">
+                <tbody>
+                <tr>
+                    <td class="largeBox"><input type="text" name="taskName" class="form-control"
+                                                placeholder="enter something"
+                                                required></td>
+                    <td class="smallBox">
+                        <button type="submit" name="btn" class="btn btn-dark mb-2">Add task</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </form>
-    <br>
+    <?php include 'config/tasksConfig.php'; ?>
+
     <table class="table">
         <thead class="thead-dark">
         <tr>
-            <th scope="col">№</th>
-            <th scope="col" class="table_list">Task</th>
+            <th scope="col" class="largeBox">Tasks</th>
+            <th scope="col" class="smallBox">Done</th>
+            <th scope="col" class="smallBox">Edit</th>
+            <th scope="col" class="smallBox">Delete</th>
         </tr>
         </thead>
-        <tbody class="table_body">
+        <tbody>
         <?php
-        $i = 1;
-        $getFunc = getTask($_GET['id']);
-        if (!empty($getFunc)) {
-            foreach ($getFunc as $val) {
-                if ($val) {
-//                    ?>
-                    <tr>
-                        <th scope="row"><?= $i; ?></th>
-                        <td>
-                            <pre>
-                            <?php
-                            print_r($val['task']);
-                            ?>
-                            </pre>
-                        </td>
-                    </tr>
-                    <?php
-                }
-                $i++;
+        foreach ($res as $re) {
+            $id = $re['id'];
+            if ($id) {
+                $chb = $re['chb'];
+                ?>
+                <tr>
+                    <td class="largeBoxTask"><?= $re['task']; ?></td>
+                    <td class="smallBox"><?php
+                        if ($chb == 1) {
+                            echo '<input type="checkbox"  name="chb" checked>';
+                        } else {
+                            echo '<input type="checkbox"   name="chb" >';
+                        } ?></td>
+                    <td class="smallBox"><?= ' <a href="edit/editTask.php?edit=' . $id . '">Edit</a>'; ?></td>
+                    <td class="smallBox"><?= ' <a href="?del=' . $re['id'] . '">Delete</a>'; ?></td>
+                </tr>
+                <?php
             }
         }
         ?>
         </tbody>
     </table>
-
 </div>
-<?php include 'view/footer.php'; ?>
+</body>
+</html>
